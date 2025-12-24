@@ -24,3 +24,8 @@ conda activate rna-seq-mini
 
 bash run.sh
 ```
+## Example Output
+
+![PCA plot from simulated RNA-seq data](docs/example_pca.png)  
+
+![Volcano plot from simulated RNA-seq data](docs/example_volcano.png)

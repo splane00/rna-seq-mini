@@ -30,8 +30,9 @@ percentVar <- round(100 * attr(pca, "percentVar"))
 
 p <- ggplot(pca, aes(PC1, PC2, color=condition)) +
   geom_point(size=3) +
-  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  xlab(sprintf("PC1: %.1f%% variance", percentVar[1])) +
+  ylab(sprintf("PC2: %.1f%% variance", percentVar[2]))
+
   theme_minimal()
 
 ggsave("results/pca.png", plot=p, width=5, height=4)

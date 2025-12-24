@@ -1,10 +1,11 @@
 name: rna-seq-mini
 channels:
   - conda-forge
+  - bioconda
 dependencies:
   - python=3.11
   - numpy
   - pandas
-  - r-base=4.3
+  - r-base=4.4
   - r-ggplot2
   - bioconductor-deseq2

@@ -26,8 +26,11 @@ bash run.sh
 ```
 ## Example Output
 
-![PCA plot from simulated RNA-seq data](docs/example_pca.png)  
-**PCA plot** shows that treatment status is the dominant source of variance after normalization.
+<p align="center">
+  <img src="docs/example_pca.png" width="350">
+  <img src="docs/example_volcano.png" width="350">
+</p>
 
-![Volcano plot from simulated RNA-seq data](docs/example_volcano.png)  
+**PCA plot** shows that treatment status is the dominant source of variance after normalization.
+ 
 **Volcano plot** highlights genes with statistically significant expression changes recovered by DESeq2 from the simulated dataset.

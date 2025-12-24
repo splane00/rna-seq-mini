@@ -13,6 +13,7 @@ No external datasets or FASTQ files are required.
 ---
 
 ## Quick Start
+On first run, DESeq2 is installed automatically via Bioconductor inside the conda R environment.  
 
 ```bash
 git clone https://github.com/splane00/rna-seq-mini.git

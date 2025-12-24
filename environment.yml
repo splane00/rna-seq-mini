@@ -7,4 +7,4 @@ dependencies:
   - pandas
   - r-base=4.3
   - r-ggplot2
-  - biocuductor-deseq2
+  - bioconductor-deseq2

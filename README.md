@@ -31,6 +31,4 @@ bash run.sh
   <img src="docs/example_volcano.png" width="350">
 </p>
 
-**PCA plot** shows that treatment status is the dominant source of variance after normalization.
- 
-**Volcano plot** highlights genes with statistically significant expression changes recovered by DESeq2 from the simulated dataset.
+PCA and volcano plots from DESeq2 analysis of simulated RNA-seq data, showing clear separation between control and treated samples.

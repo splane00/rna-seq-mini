@@ -1,18 +1,18 @@
 FROM bioconductor/bioconductor_docker:RELEASE_3_20
 
-# Install Python
+# Install Python and pip
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 # Python dependencies
-RUN pip3 install numpy pandas
+RUN python3 -m pip install --no-cache-dir numpy pandas
 
 WORKDIR /app
 COPY . /app
 
-# Sanity check (fail fast if DESeq2 is missing)
+# Fail fast if DESeq2 is missing
 RUN R -e "library(DESeq2)"
 
 CMD ["bash", "run.sh"]

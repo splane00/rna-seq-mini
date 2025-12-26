@@ -1,13 +1,11 @@
 FROM bioconductor/bioconductor_docker:RELEASE_3_20
 
-# Install Python and pip
+# Install Python and Python packages via apt (PEP 668 safe)
 RUN apt-get update && apt-get install -y \
     python3 \
-    python3-pip \
+    python3-numpy \
+    python3-pandas \
     && rm -rf /var/lib/apt/lists/*
-
-# Python dependencies
-RUN python3 -m pip install --no-cache-dir numpy pandas
 
 WORKDIR /app
 COPY . /app

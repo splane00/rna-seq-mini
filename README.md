@@ -13,6 +13,7 @@ No external datasets or FASTQ files are required.
 ---
 
 ## Quick Start
+1. Clone the repo, start the Docker build, and run the pipeline:
 ```bash
 git clone https://github.com/splane00/rna-seq-mini.git
 cd rna-seq-mini
@@ -20,6 +21,11 @@ cd rna-seq-mini
 docker build -t rna-seq-mini .
 docker run --rm -v "$PWD/results:/app/results" rna-seq-mini
 ```  
+2. Open results:
+```bash
+open results/pca.png
+open results/volcano.png
+```
 
 ## Example Output
 

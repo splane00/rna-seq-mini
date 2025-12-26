@@ -1,10 +1,10 @@
 library(DESeq2)
 library(ggplot2)
 
-counts <- read.table("results/counts.tsv", header=TRUE, row.names=1)
+counts <- read.table("results/counts.tsv", heade = TRUE, row.names = 1)
 
 condition <- factor(c(rep("control", 3), rep("treated", 3)))
-coldata <- data.frame(row.names=colnames(counts), condition)
+coldata <- data.frame(row.names = colnames(counts), condition)
 
 dds <- DESeqDataSetFromMatrix(
   countData = counts,
@@ -15,27 +15,26 @@ dds <- DESeqDataSetFromMatrix(
 dds <- DESeq(dds)
 
 # Normalized counts
-norm_counts <- counts(dds, normalized=TRUE)
+norm_counts <- counts(dds, normalized = TRUE)
 write.table(
   norm_counts,
   "results/normalized_counts.tsv",
-  sep="\t",
-  quote=FALSE
+  sep = "\t",
+  quote = FALSE
 )
 
 # PCA
 vsd <- vst(dds)
-pca <- plotPCA(vsd, intgroup="condition", returnData=TRUE)
-percentVar <- round(100 * attr(pca, "percentVar"))
+pca <- plotPCA(vsd, intgroup = "condition", returnData = TRUE)
+percent_var <- round(100 * attr(pca, "percent_var"))
 
-p <- ggplot(pca, aes(PC1, PC2, color=condition)) +
-  geom_point(size=3) +
+p <- ggplot(pca, aes(PC1, PC2, color = condition)) +
+  geom_point(size = 3) +
   xlab(sprintf("PC1: %.1f%% variance", percentVar[1])) +
   ylab(sprintf("PC2: %.1f%% variance", percentVar[2]))
+theme_minimal()
 
-  theme_minimal()
-
-ggsave("results/pca.png", plot=p, width=5, height=4)
+ggsave("results/pca.png", plot = p, width = 5, height = 4)
 
 # Differential expression
 res <- results(dds)
@@ -45,19 +44,19 @@ res_df$gene <- rownames(res_df)
 write.table(
   res_df,
   "results/deseq2_results.tsv",
-  sep="\t",
-  quote=FALSE,
-  row.names=FALSE
+  sep = "\t",
+  quote = FALSE,
+  row.names = FALSE
 )
 
 # Volcano plot
 res_df$significant <- res_df$padj < 0.05
 
 v <- ggplot(res_df, aes(log2FoldChange, -log10(padj))) +
-  geom_point(aes(color=significant), alpha=0.6) +
-  scale_color_manual(values=c("grey", "red")) +
+  geom_point(aes(color = significant), alpha = 0.6) +
+  scale_color_manual(values = c("grey", "red")) +
   theme_minimal()
 
-ggsave("results/volcano.png", plot=v, width=5, height=4)
+ggsave("results/volcano.png", plot = v, width = 5, height = 4)
 
 cat("DESeq2 analysis complete.\n")

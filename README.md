@@ -1,4 +1,4 @@
-# Differential Expression Mini-Analysis (Simulated RNA-seq)
+# Differential Expression Mini-Analysis (Simulated RNA-seq Dataset)
 
 This repository demonstrates a fully reproducible RNA-seq differential expression analysis using simulated count data.
 
@@ -13,10 +13,6 @@ No external datasets or FASTQ files are required.
 ---
 
 ## Quick Start
-On first run, DESeq2 is installed automatically via Bioconductor inside the conda R environment.  
-
-## Quick Start (Recommended: Docker)
-
 ```bash
 git clone https://github.com/splane00/rna-seq-mini.git
 cd rna-seq-mini
@@ -24,7 +20,6 @@ cd rna-seq-mini
 docker build -t rna-seq-mini .
 docker run --rm -v "$PWD/results:/app/results" rna-seq-mini
 ```  
-A conda-based environment is provided for reference but may fail on macOS arm64 due to Bioconductor binary availability. Docker is the recommended execution method.  
 
 ## Example Output
 
